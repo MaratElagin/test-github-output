@@ -1,0 +1,23 @@
+name: Test GITHUB_OUTPUT Ubuntu
+
+on:
+  push:
+    paths:
+      - '.github/workflows/ubuntu.yml'
+
+jobs:
+  prepare:
+    name: Test
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Generate release number
+      - id: release-number
+      - shell: pwsh
+        run: |
+          $ReleaseNumber = 12345
+          Write-Host "release-number=${ReleaseNumber}" >> $env:GITHUB_OUTPUT
+      
+      - name: Get release number
+      - run: echo "release is ${{ steps.release-number.outputs.release-number }}"
