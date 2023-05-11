@@ -18,7 +18,6 @@ jobs:
         run: |
           $ReleaseNumber = 12345
           Write-Output "release-number=${ReleaseNumber}" >> $env:GITHUB_OUTPUT
-          Write-Host release-number=${ReleaseNumber}
       
       - name: Get release number
         run: echo "release is ${{ steps.release-number.outputs.release-number }}"
